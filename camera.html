@@ -8,5 +8,14 @@
 		<script src="./js/camera.js"></script>
 	</head>
 	<body>
+		<video id="camera" width="300" height="200" autoplay playsinline></video><br/>
+		<canvas id="picture" width="300" height="200"></canvas>
+		<form>
+			<button type="button" id="shutterButton">シャッター</button>
+		</form>
+
+		<audio id="se" preload="auto">
+			<source src="./audio/camera-shutter.mp3" type="audio/mp3">
+		</audio>
 	</body>
 </html>
