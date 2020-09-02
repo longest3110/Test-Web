@@ -46,6 +46,12 @@ FileSelect.prototype = {
 	displayImage: function (file) {
 		var reader = new FileReader();
 
+		//画像以外のファイル形式は処理終了
+		if (!file.type.match('image.*')) {
+			alert("画像ファイルを選択してください");
+			return;
+		}
+
 		reader.readAsDataURL(file)
 		reader.onload = function () {
 			var image = $("#outputImage");
