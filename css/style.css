@@ -1,10 +1,15 @@
 button {
 	width: 200px;
 	height: 50px;
+	font-size: 30px;
 }
 
 .block {
 	display: block;
+}
+
+.hidden {
+	display: none;
 }
 
 .w100p {
