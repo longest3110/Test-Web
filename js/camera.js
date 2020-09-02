@@ -88,9 +88,8 @@ Camera.prototype = {
 		}, 500);
 
 		//キャンバスサイズ変更
-		var jVideo = $("#camera");
-		canvas.width = jVideo.width();
-		canvas.height = jVideo.height();
+		canvas.width = video.videoWidth;
+		canvas.height = video.videoHeight;
 
 		// canvasに画像を貼り付ける
 		ctx.drawImage(video, 0, 0);
