@@ -87,8 +87,22 @@ Camera.prototype = {
 			video.play();    // 0.5秒後にカメラ再開
 		}, 500);
 
+		//キャンバスサイズ変更
+		var jVideo = $("#camera");
+		canvas.width = jVideo.width();
+		canvas.height = jVideo.height();
+
 		// canvasに画像を貼り付ける
-		ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+		ctx.drawImage(video, 0, 0);
+
+		//アンカータグを作成
+		var a = document.createElement('a');
+		//canvasをJPEG変換し、そのBase64文字列をhrefへセット
+		a.href = canvas.toDataURL('image/jpeg', 1.0);
+		//ダウンロード時のファイル名を指定
+		a.download = 'download.jpg';
+		//クリックイベントを発生させる
+		a.click();
 	}
 
 }
