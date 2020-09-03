@@ -17,6 +17,11 @@ button {
 	width: 100%;
 }
 
+#shutterButton {
+	width: 100%;
+	bottom: 0px;
+}
+
 .cropper-area img {
 	display: block;
 	max-width: 100%;
