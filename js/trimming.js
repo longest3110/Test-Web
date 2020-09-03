@@ -1,5 +1,7 @@
 var Trimming = function() {};
 
+var cropper;
+
 Trimming.prototype = {
 	//初期化処理
 	initialize: function () {
@@ -12,12 +14,32 @@ Trimming.prototype = {
 	//コントロール初期化
     initializeComponent: function () {
 		var cropperImg = document.getElementById('cropper-img');
-		var cropper = new Cropper(cropperImg);
+		cropper = new Cropper(cropperImg);
     },
 
     //イベント初期化
     initializeEvents: function () {
-    }
+		var self = this;
+
+		//保存ボタン押下
+		$("#saveButton").click(function () {
+			self.save();
+		});
+	},
+	
+	//保存ボタン
+	save: function () {
+		var base64 = cropper.getCroppedCanvas().toDataURL();
+
+		//アンカータグを作成
+		var a = document.createElement('a');
+		//canvasをJPEG変換し、そのBase64文字列をhrefへセット
+		a.href = base64;
+		//ダウンロード時のファイル名を指定
+		a.download = 'result.jpg';
+		//クリックイベントを発生させる
+		a.click();
+	}
 
 }
 
