@@ -13,7 +13,7 @@ Trimming.prototype = {
     initializeComponent: function () {
 		$("#cropper-img").cropper({
 			viewMode: 2,
-			dragMode: none
+			dragMode: 'none'
 		});
     },
 
