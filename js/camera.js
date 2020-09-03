@@ -8,9 +8,18 @@ var se;
 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia ||
 	navigator.mozGetUserMedia || navigator.msGetUserMedia;
 
-const constraints = {
+const frontOption = {
 	audio: false,
 	video: true
+};
+
+const rearOption = {
+	audio: false,
+	video: {
+		facingMode: {
+			exact: "environment"
+		}
+	}
 };
 
 Camera.prototype = {
@@ -34,13 +43,19 @@ Camera.prototype = {
 		var self = this;
 
 		//カメラをvideoと同期
-		self.getDeviceStream(constraints)
+		self.getDeviceStream(rearOption)
 		.then(function (stream) { // success
 			self.playVideo(video, stream);
 		}).catch(function (error) { // error
-			console.error('getUserMedia error:', error);
-			alert('getUserMedia error:', error);
-			return;
+			//リアカメラの初期化に失敗したら、フロントカメラの初期化を試みる
+			self.getDeviceStream(frontOption)
+			.then(function (stream) { // success
+				self.playVideo(video, stream);
+			}).catch(function (error) { // error
+				console.error('getUserMedia error:', error);
+				alert('getUserMedia error:', error);
+				return;
+			});
 		});
 
 		//シャッターボタン押下
