@@ -1,7 +1,5 @@
 var Trimming = function() {};
 
-var cropper;
-
 Trimming.prototype = {
 	//初期化処理
 	initialize: function () {
@@ -13,8 +11,8 @@ Trimming.prototype = {
 
 	//コントロール初期化
     initializeComponent: function () {
-		var cropperImg = document.getElementById('cropper-img');
-		cropper = new Cropper(cropperImg);
+		$("#cropper-img").cropper({
+		});
     },
 
     //イベント初期化
@@ -29,7 +27,7 @@ Trimming.prototype = {
 	
 	//保存ボタン
 	save: function () {
-		var base64 = cropper.getCroppedCanvas().toDataURL();
+		var base64 = $("#cropper-img").getCroppedCanvas().toDataURL();
 
 		//アンカータグを作成
 		var a = document.createElement('a');
