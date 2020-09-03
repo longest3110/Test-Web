@@ -17,6 +17,11 @@ button {
 	width: 100%;
 }
 
+.cropper-area img {
+	display: block;
+	max-width: 100%;
+}
+
 .block {
 	display: block;
 }
