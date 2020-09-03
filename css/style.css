@@ -13,7 +13,8 @@ button {
 	left: 0;
 }
 
-.camera-body {
+#outputImage {
+	width: 100%;
 }
 
 .block {
