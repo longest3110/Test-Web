@@ -8,9 +8,15 @@
 		<script src="./js/camera.js"></script>
 	</head>
 	<body>
-		<video id="camera" class="camera-view" autoplay playsinline></video><br/>
-		<canvas id="picture" class="hidden"></canvas><br/>
-		<button type="button" id="shutterButton">シャッター</button>
+		<div class="camera-body">
+			<video id="camera" class="camera-view" autoplay playsinline></video>
+			<canvas id="picture" class="hidden"></canvas><br/>
+			<img class="camera-view" src="./image/frame.png">
+		</div>
+
+		<div>
+			<button type="button" id="shutterButton">シャッター</button>
+		</div>
 
 		<audio id="se" preload="auto">
 			<source src="./audio/camera-shutter.mp3" type="audio/mp3">
