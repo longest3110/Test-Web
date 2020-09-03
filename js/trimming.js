@@ -27,7 +27,7 @@ Trimming.prototype = {
 	
 	//保存ボタン
 	save: function () {
-		var base64 = $("#cropper-img").cropper('getData');
+		var base64 = $("#cropper-img").cropper('getCroppedCanvas').toDataURL('image/jpeg', 1.0);
 
 		//アンカータグを作成
 		var a = document.createElement('a');
