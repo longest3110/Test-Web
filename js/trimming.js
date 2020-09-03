@@ -12,6 +12,8 @@ Trimming.prototype = {
 	//コントロール初期化
     initializeComponent: function () {
 		$("#cropper-img").cropper({
+			viewMode: 2,
+			dragMode: none
 		});
     },
 
