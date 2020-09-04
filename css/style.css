@@ -6,11 +6,12 @@ button {
 }
 
 .camera-view {
-	width: 100%;
-	height: 90%;
 	position: absolute;
-	top: 0;
-	left: 0;
+	height: 90%;
+	width: 100%;
+	object-fit: cover;
+	left: 0px;
+	top: 0px;
 }
 
 #outputImage {
@@ -18,8 +19,10 @@ button {
 }
 
 #shutterButton {
-	width: 100%;
-	bottom: 0px;
+	position: absolute !important;
+	width: 100% !important;
+	height: 10% !important;
+	bottom: 0px !important;
 }
 
 .cropper-area img {
