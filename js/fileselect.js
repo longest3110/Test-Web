@@ -47,18 +47,36 @@ FileSelect.prototype = {
 			switch ($('input[name="trigger"]:checked').val()) {
 				//画像表示
 				case "0":
+					$(".cropper-area").hide();
 					self.displayImage(file, "outputImage");
+					break;
 
 				//トリミング画面表示
 				case "1":
+					$("#outputImage").hide();
 					self.displayTrimming(file);
+					break;
 			}
 
 		});
 	},
 	
+	//cropper初期化
+	initializeCropper: function () {
+		//一旦今あるcropperを削除
+		$("#cropper-img").cropper('destroy');
+
+		//初期化		
+		$("#cropper-img").cropper({
+			viewMode: 2,
+			dragMode: 'none'
+		});
+
+	},
+	
 	//選択されたファイルを表示
 	displayImage: function (file, targetId) {
+		var self = this;
 		var reader = new FileReader();
 
 		reader.readAsDataURL(file)
@@ -67,6 +85,11 @@ FileSelect.prototype = {
 
 			image.attr("src", reader.result);
 			image.show();
+
+			//トリミングモードの場合はcropper初期化
+			if ($('input[name="trigger"]:checked').val() == "1") {
+				self.initializeCropper();
+			}
 		}
 	},
 
@@ -74,17 +97,11 @@ FileSelect.prototype = {
 	displayTrimming: function (file) {
 		var self = this;
 
-		//ファイル表示
-		self.displayImage(file, "cropper-img");
-
-		//Cropper初期化
-		$("#cropper-img").cropper({
-			viewMode: 2,
-			dragMode: 'none'
-		});
-
 		//トリミング画面表示
 		$(".cropper-area").show();
+
+		//ファイル表示
+		self.displayImage(file, "cropper-img");
 	}
 
 }
