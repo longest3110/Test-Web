@@ -69,7 +69,9 @@ FileSelect.prototype = {
 		//初期化		
 		$("#cropper-img").cropper({
 			viewMode: 2,
-			dragMode: 'none'
+			dragMode: 'none',
+			minContainerWidth: window.innerWidth,
+			minContainerHeight: window.innerHeight * 0.9
 		});
 
 	},
