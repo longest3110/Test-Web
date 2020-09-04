@@ -1,8 +1,8 @@
 button {
-	width: 200px;
-	height: 50px;
-	font-size: 30px;
-	position: relative;
+    width: 20%;
+    height: 10vh;
+    font-size: 3vw;
+    position: relative;
 }
 
 .camera-view {
