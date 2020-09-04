@@ -38,27 +38,53 @@ FileSelect.prototype = {
 			// 1つ目のファイルを取得する
 			const file = files[0];
 
-			self.displayImage(file);
+			//画像以外のファイル形式は処理終了
+			if (!file.type.match('image.*')) {
+				alert("画像ファイルを選択してください");
+				return;
+			}
+
+			switch ($('input[name="trigger"]:checked').val()) {
+				//画像表示
+				case "0":
+					self.displayImage(file, "outputImage");
+
+				//トリミング画面表示
+				case "1":
+					self.displayTrimming(file);
+			}
+
 		});
 	},
 	
 	//選択されたファイルを表示
-	displayImage: function (file) {
+	displayImage: function (file, targetId) {
 		var reader = new FileReader();
-
-		//画像以外のファイル形式は処理終了
-		if (!file.type.match('image.*')) {
-			alert("画像ファイルを選択してください");
-			return;
-		}
 
 		reader.readAsDataURL(file)
 		reader.onload = function () {
-			var image = $("#outputImage");
+			var image = $("#" + targetId);
 
 			image.attr("src", reader.result);
 			image.show();
 		}
+	},
+
+	//トリミング画面を表示
+	displayTrimming: function (file) {
+		var self = this;
+
+		//ファイル表示
+		self.displayImage(file, "cropper-img");
+
+		//Cropper初期化
+		$("#cropper-img").cropper({
+			viewMode: 2,
+			dragMode: 'none'
+		});
+
+		//トリミング画面表示
+		$(".cropper-area").show();
 	}
 
 }

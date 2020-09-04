@@ -5,6 +5,10 @@ button {
     position: relative;
 }
 
+label {
+    font-size: 3vw;
+}
+
 .camera-view {
 	position: absolute;
 	height: 90%;

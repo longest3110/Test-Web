@@ -4,17 +4,24 @@
 		<meta charset="utf-8">
 		<title>ファイル選択</title>
 		<link href="css/style.css" rel="stylesheet" type="text/css">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/cropper/4.1.0/cropper.min.css" rel="stylesheet">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/cropper/4.1.0/cropper.min.js"></script>
 		<script src="./js/fileselect.js"></script>
 	</head>
 	<body>
 		<img id="outputImage" src="" alt="出力結果" class="block hidden">
 		<input type="file" id="fileSelecter" class="hidden" accept="image/*">
+
+		<div class="cropper-area hidden">
+			<img id="cropper-img" src="">
+		</div>
+
 		<button type="button" id="fileSelectButton" class="block">ファイル選択</button>
 
 		<div>
-			<input type="radio" name="trigger" value="0" checked>ファイル選択後に表示<br>
-			<input type="radio" name="trigger" value="1">ファイル選択後にトリミング
+			<input type="radio" name="trigger" value="0" checked><label for="">ファイル選択後に表示</label><br>
+			<input type="radio" name="trigger" value="1"><label for="">ファイル選択後にトリミング</label>
 		</div>
 	</body>
 </html>
