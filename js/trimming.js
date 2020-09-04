@@ -14,8 +14,10 @@ Trimming.prototype = {
 		$("#cropper-img").cropper({
 			viewMode: 2,
 			dragMode: 'none',
+			maxContainerWidth: window.innerWidth,
 			minContainerWidth: window.innerWidth,
-			minContainerHeight: window.innerHeight * 0.9
+			minContainerHeight: window.innerHeight * 0.9,
+			maxContainerHeight: window.innerHeight * 0.9
 		});
     },
 
